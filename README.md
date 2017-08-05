@@ -1,6 +1,8 @@
-# tutti-frutti
+# Tutti-Frutti
 
-Selector de letras para jugar al Tutti-Frutti hecho con Jquery y Bootstrap
+Selector aleatorio de letras para jugar al Tutti-Frutti hecho con Jquery y Bootstrap
+
+Random letter selector to play Tutti-Frutti made with Jquery and Bootstrap
 
 # DEMO ONLINE
 
