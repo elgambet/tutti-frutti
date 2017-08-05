@@ -1,0 +1,115 @@
+<html>
+
+<head>
+	<title>Tutti Frutti</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	  crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header">Tutti - Frutti</div>
+			<div class="card-block">
+				<h4>Letra: <span id="letter"></span></h4>
+				<br>
+				<h4>Usadas: <span id="letterused"></span></h4>
+				<br>
+				<button class="btn btn-lg btn-success" id="start" type="button" ng-click="start()">
+					<span>Empezar</span>
+				</button>
+				<button class="btn btn-lg btn-warning" id="stop" type="button" ng-click="stop()">
+					<span>Parar</span>
+				</button>
+				<br>
+				<button class="btn btn-lg btn-error" id="reset" type="button" ng-click="stop()" style="margin-top: 50px;">
+					<span>Limpiar</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$().ready(function () {
+			var used = [];
+			var letters = [];
+			var looping = false;
+			var interval = null;
+			var start = $("#start");
+			var stop = $("#stop");
+			var resetEl = $("#reset");
+			var i = 0;
+
+			var reset = function () {
+				used = [];
+				letters = [
+					'a',
+					'b',
+					'c',
+					'd',
+					'e',
+					'f',
+					'g',
+					'h',
+					'i',
+					'j',
+					'k',
+					'l',
+					'm',
+					'n',
+					'ñ',
+					'o',
+					'p',
+					'q',
+					'r',
+					's',
+					't',
+					'u',
+					'v',
+					'w',
+					'x',
+					'y',
+					'z'
+				];
+				$('#letter').html('');
+				$('#letterused').html('');
+				start.show();
+				stop.hide();
+			}
+
+			start.on("click", function (ev) {
+				if (letters.length) {
+					interval = setInterval(function () {
+						if (i >= letters.length) i = 0;
+						letter = letters[i];
+						$('#letter').html(letter);
+						i++;
+					});
+					start.hide();
+					stop.show();
+				} else {
+					clearInterval(interval);
+				}
+			});
+
+			stop.on("click", function (ev) {
+				clearInterval(interval);
+				used.push(letter);
+				letters.splice(i - 1, 1);
+				$('#letterused').html(used.join(', '));
+				stop.hide();
+				start.show();
+			});
+
+			resetEl.on("click", function () {
+				reset();
+			});
+
+			reset();
+		})
+	</script>
+</body>
+
+</html>
