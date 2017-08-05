@@ -1,4 +1,4 @@
-# Tutti-Frutti
+# Tutti Frutti
 
 Selector aleatorio de letras para jugar al Tutti-Frutti hecho con Jquery y Bootstrap
 
